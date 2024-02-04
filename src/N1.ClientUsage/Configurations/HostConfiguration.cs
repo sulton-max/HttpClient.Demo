@@ -9,7 +9,10 @@ public static partial class HostConfiguration
     /// <returns>Application builder</returns>
     public static ValueTask<WebApplicationBuilder> ConfigureAsync(this WebApplicationBuilder builder)
     {
-        builder.AddDevTools().AddExposers();
+        builder
+            .AddWeatherForecastInfrastructure()
+            .AddDevTools()
+            .AddExposers();
 
         return new ValueTask<WebApplicationBuilder>(builder);
     }
@@ -21,7 +24,9 @@ public static partial class HostConfiguration
     /// <returns>Application host</returns>
     public static ValueTask<WebApplication> ConfigureAsync(this WebApplication app)
     {
-        app.UseDevTools().UseCors().UseStaticFiles();
+        app
+            .UseDevTools()
+            .UseExposers();
 
         return new ValueTask<WebApplication>(app);
     }
