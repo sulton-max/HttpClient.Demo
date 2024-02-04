@@ -31,7 +31,7 @@ public class AuthController(AppDbContext appDbContext, IOptions<JwtSettings> jwt
         return Ok(GenerateToken(user));
     }
 
-    [Authorize]
+    // [Authorize]
     [HttpGet("users/{userId:guid}")]
     public async Task<IActionResult> GetUserById([FromRoute] Guid userId, CancellationToken cancellationToken)
     {
